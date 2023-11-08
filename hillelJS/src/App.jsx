@@ -1,6 +1,6 @@
 import './App.css'
-import Input from "./components/input/Input.jsx";
-import Button from "./components/button/Button.jsx";
+import Input from "./components/Input/Input.jsx";
+import Button from "./components/Button/Button.jsx";
 
 function App() {
 
@@ -8,7 +8,7 @@ function App() {
     <div>
       <Input/>
       <Button title="OK"></Button>
-      <Button title="Reset"></Button>
+      <Button title="Reset" />
     </div>
   )
 }
