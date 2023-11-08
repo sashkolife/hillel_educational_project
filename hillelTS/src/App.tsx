@@ -1,6 +1,6 @@
 import './App.css'
-import Input from "./components/input/Input.tsx";
-import Button from "./components/button/Button.tsx";
+import Input from "./components/Input/Input.tsx";
+import Button from "./components/Button/Button.tsx";
 
 function App(){
 
