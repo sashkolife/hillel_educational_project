@@ -1,22 +1,16 @@
 import React, {useState} from "react";
+import StudentsBox from "./components/StudentsBox/StudentsBox.tsx";
+import Header from "./components/Header/Header.tsx";
 
 function App(): React.JSX.Element {
 
-    const [count, setCount] = useState(0);
-
-    const handleMinusClick = () => {
-        setCount(count-1);
-    };
-
-    const handlePlusClick = () => {
-        setCount(count+1);
-    };
+    const [isVisible, toggleHeaderVisibility] = useState(true);
 
     return (
         <div>
-            <p>Count: {count}</p>
-            <button onClick={handleMinusClick}>Decrement</button>
-            <button onClick={handlePlusClick}>Increment</button>
+            <button onClick={() => toggleHeaderVisibility(!isVisible)}>Toggle visibility</button>
+            {isVisible && <Header/>}
+            <StudentsBox/>
         </div>
     )
 }
