@@ -1,5 +1,10 @@
 import {UserLevel} from "../enums/enums.ts";
 
+export interface UserModelShort {
+    id: number;
+    fullName: string;
+}
+
 export interface UserModel {
     id: number;
     fullName: string;

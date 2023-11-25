@@ -1,17 +1,35 @@
-import React, {useState} from "react";
-import StudentsBox from "./components/StudentsBox/StudentsBox.tsx";
-import Header from "./components/Header/Header.tsx";
+import React from "react";
+import {Routes, Route} from "react-router-dom";
+import Home from "./pages/Home.tsx";
+import Users from "./pages/Users.tsx";
+import PageNotFound from "./pages/PageNotFound.tsx";
+import About from "./pages/About.tsx";
+import UserProfile from "./pages/UserProfile.tsx";
+import Layout from "./components/Layout/Layout.tsx";
+import {Pages} from "./enums/enums.ts";
+import Auth from "./pages/Auth.tsx";
 
 function App(): React.JSX.Element {
 
-    const [isVisible, toggleHeaderVisibility] = useState(true);
-
     return (
-        <div>
-            <button onClick={() => toggleHeaderVisibility(!isVisible)}>Toggle visibility</button>
-            {isVisible && <Header/>}
-            <StudentsBox/>
-        </div>
+        <>
+            <div>
+                <Routes>
+                    <Route path={Pages.HOME} element={<Layout />}>
+                        <Route path={Pages.HOME} element={<Home />}/>
+                        <Route path={Pages.USERS} element={<Users />}/>
+                        <Route path={Pages.ABOUT} element={<About />}/>
+                    </Route>
+
+                    <Route path={Pages.USER_PROFILE} element={<UserProfile />}/>
+
+                    <Route path={Pages.AUTH} element={<Auth />}/>
+
+                    <Route path={Pages.PAGE_NOT_FOUND} element={<PageNotFound />}/>
+                </Routes>
+
+            </div>
+        </>
     )
 }
 
