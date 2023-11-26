@@ -1,12 +1,13 @@
 import {NavLink} from "react-router-dom";
+import {Pages} from "../../enums/enums.ts";
 
 const Header = () => {
 
     return (
         <div className="nav">
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/users">Users</NavLink>
-            <NavLink to="/about">About</NavLink>
+            <NavLink to={Pages.HOME}>Home</NavLink>
+            <NavLink to={Pages.USERS}>Users</NavLink>
+            <NavLink to={Pages.ABOUT}>About</NavLink>
         </div>
     )
 }
