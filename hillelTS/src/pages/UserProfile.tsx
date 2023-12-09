@@ -1,4 +1,4 @@
-import {UserModel} from "../models/models.tsx";
+import {UserModel} from "../models/models.ts";
 import React, {useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
 import Spinner from "../components/Spinner/Spinner.tsx";

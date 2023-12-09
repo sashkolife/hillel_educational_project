@@ -1,4 +1,4 @@
-import {UserModel} from "../models/models.tsx";
+import {UserModel} from "../models/models.ts";
 import {UserLevel} from "../enums/enums.ts";
 
 export const students: UserModel[] = [

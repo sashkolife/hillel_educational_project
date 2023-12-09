@@ -1,0 +1,6 @@
+export enum CounterTypes {
+    INCREMENT = "INCREMENT",
+    INCREMENT_BY_VALUE = "INCREMENT_BY_VALUE",
+    DECREMENT = "DECREMENT",
+    RESET = "RESET"
+}

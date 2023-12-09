@@ -1,5 +1,5 @@
 import React from "react";
-import {UserModel} from "../../models/models.tsx";
+import {UserModel} from "../../models/models.ts";
 
 interface ICardProps {
     userInfo: UserModel;

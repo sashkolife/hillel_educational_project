@@ -1,33 +1,29 @@
-import React from "react";
-import {Routes, Route} from "react-router-dom";
-import Home from "./pages/Home.tsx";
-import Users from "./pages/Users.tsx";
-import PageNotFound from "./pages/PageNotFound.tsx";
-import About from "./pages/About.tsx";
-import UserProfile from "./pages/UserProfile.tsx";
-import Layout from "./components/Layout/Layout.tsx";
-import {Pages} from "./enums/enums.ts";
-import Auth from "./pages/Auth.tsx";
+import React, {BaseSyntheticEvent, useContext, useState} from "react";
+import {CounterContext} from "./contexts/CounterContext.tsx";
+import {CounterContextModel} from "./models/reducerModels.ts";
 
 function App(): React.JSX.Element {
+
+    const [incrementValue, setIncrementValue] = useState<number>(0);
+
+    const handleIncrementValueChange = (e: BaseSyntheticEvent) => {
+        setIncrementValue(e.target.value);
+    };
+
+    const {state, onIncrement, onIncrementByValue, onDecrement, onReset } = useContext<CounterContextModel>(CounterContext);
 
     return (
         <>
             <div>
-                <Routes>
-                    <Route path={Pages.HOME} element={<Layout />}>
-                        <Route path={Pages.HOME} element={<Home />}/>
-                        <Route path={Pages.USERS} element={<Users />}/>
-                        <Route path={Pages.ABOUT} element={<About />}/>
-                    </Route>
+                <h1>Counter value: {state.counter}</h1>
+                <button onClick={onIncrement}>Increment</button>
+                <button onClick={onDecrement}>Decrement</button>
+                <button onClick={onReset}>Reset</button>
+                <div>
+                    <input type='number' placeholder='Value' value={incrementValue} onChange={handleIncrementValueChange} />
+                    <button onClick={() => onIncrementByValue(incrementValue)}>Increment by value</button>
 
-                    <Route path={Pages.USER_PROFILE} element={<UserProfile />}/>
-
-                    <Route path={Pages.AUTH} element={<Auth />}/>
-
-                    <Route path={Pages.PAGE_NOT_FOUND} element={<PageNotFound />}/>
-                </Routes>
-
+                </div>
             </div>
         </>
     )

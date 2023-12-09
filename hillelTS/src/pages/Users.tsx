@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {UserModelShort} from "../models/models.tsx";
+import {UserModelShort} from "../models/models.ts";
 import Spinner from "../components/Spinner/Spinner.tsx";
 import {Link} from "react-router-dom";
 
