@@ -3,6 +3,7 @@ export enum Pages {
     AUTH = "/auth",
     ABOUT = "/about",
     USERS = "/users",
+    POSTS = "/posts",
     USER_PROFILE = "/users/:id",
     PAGE_NOT_FOUND = "/*"
 }

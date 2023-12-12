@@ -1,31 +1,25 @@
-import React, {BaseSyntheticEvent, useContext, useState} from "react";
-import {CounterContext} from "./contexts/CounterContext.tsx";
-import {CounterContextModel} from "./models/reducerModels.ts";
+import React from "react";
+import {NavLink, Route, Routes} from "react-router-dom";
+import Home from "./pages/Home.tsx";
+import {Pages} from "./enums/enums.ts";
+import Users from "./pages/Users.tsx";
+import Posts from "./pages/Posts.tsx";
 
 function App(): React.JSX.Element {
-
-    const [incrementValue, setIncrementValue] = useState<number>(0);
-
-    const handleIncrementValueChange = (e: BaseSyntheticEvent) => {
-        setIncrementValue(e.target.value);
-    };
-
-    const {state, onIncrement, onIncrementByValue, onDecrement, onReset } = useContext<CounterContextModel>(CounterContext);
-
     return (
-        <>
-            <div>
-                <h1>Counter value: {state.counter}</h1>
-                <button onClick={onIncrement}>Increment</button>
-                <button onClick={onDecrement}>Decrement</button>
-                <button onClick={onReset}>Reset</button>
-                <div>
-                    <input type='number' placeholder='Value' value={incrementValue} onChange={handleIncrementValueChange} />
-                    <button onClick={() => onIncrementByValue(incrementValue)}>Increment by value</button>
-
-                </div>
+        <div>
+            <div className="nav">
+                <NavLink to={Pages.HOME}>Home</NavLink>
+                <NavLink to={Pages.USERS}>Users</NavLink>
+                <NavLink to={Pages.POSTS}>Posts</NavLink>
             </div>
-        </>
+
+            <Routes>
+                <Route path={Pages.HOME} element={<Home />} />
+                <Route path={Pages.USERS} element={<Users />} />
+                <Route path={Pages.POSTS} element={<Posts />} />
+            </Routes>
+        </div>
     )
 }
 

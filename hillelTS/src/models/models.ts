@@ -1,23 +1,24 @@
-import {UserLevel} from "../enums/enums.ts";
-
-export interface UserModelShort {
-    id: number;
-    fullName: string;
+export interface IFetch {
+    isLoading: boolean;
+    error: string|null;
+    data: any[]|null;
+    refetch: any;
 }
 
 export interface UserModel {
     id: number;
-    fullName: string;
-    level: UserLevel;
-    photo: string;
-    rating: number;
-    currentModule: number;
-    time: string;
-    course: CourseModel;
+    name: string;
+    email: string;
 }
 
-export interface CourseModel {
-    courseImage: string;
-    courseTitle: string;
-    maxModules: number;
+export interface PostModel {
+    id: number;
+    title: string;
+    body: string;
+}
+
+export interface PhotoModel {
+    id: number;
+    title: string;
+    thumbnailUrl: string;
 }
