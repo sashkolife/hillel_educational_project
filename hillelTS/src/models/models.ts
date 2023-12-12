@@ -2,7 +2,7 @@ export interface IFetch {
     isLoading: boolean;
     error: string|null;
     data: any[]|null;
-    refetch: any;
+    refetch: () => null;
 }
 
 export interface UserModel {
