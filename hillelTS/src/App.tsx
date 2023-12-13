@@ -1,24 +1,28 @@
-import React from "react";
-import {NavLink, Route, Routes} from "react-router-dom";
-import Home from "./pages/Home.tsx";
-import {Pages} from "./enums/enums.ts";
-import Users from "./pages/Users.tsx";
-import Posts from "./pages/Posts.tsx";
+import React, {BaseSyntheticEvent, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import * as actions from "./redux/slices/counterSlice.ts";
+import {RootState} from "@reduxjs/toolkit/query";
 
 function App(): React.JSX.Element {
+    const dispatch = useDispatch();
+    const counter: number = useSelector((state: RootState) => state.counter.value);
+    const [incrementValue, setIncrementValue] = useState<number>(0);
+
+    const handleIncrementValueChange = (e: BaseSyntheticEvent) => {
+        setIncrementValue(e.target.value);
+    };
+
     return (
         <div>
-            <div className="nav">
-                <NavLink to={Pages.HOME}>Home</NavLink>
-                <NavLink to={Pages.USERS}>Users</NavLink>
-                <NavLink to={Pages.POSTS}>Posts</NavLink>
-            </div>
+            <h1>Counter: {counter}</h1>
+            <button onClick={() => dispatch(actions.increment())}>Increment</button>
+            <button onClick={() => dispatch(actions.decrement())}>Decrement</button>
+            <button onClick={() => dispatch(actions.reset())}>Reset</button>
+            <div>
+                <input type='number' placeholder='Value' value={incrementValue} onChange={handleIncrementValueChange} />
+                <button onClick={() => dispatch(actions.incrementByValue(Number(incrementValue)))}>Increment by value</button>
 
-            <Routes>
-                <Route path={Pages.HOME} element={<Home />} />
-                <Route path={Pages.USERS} element={<Users />} />
-                <Route path={Pages.POSTS} element={<Posts />} />
-            </Routes>
+            </div>
         </div>
     )
 }
